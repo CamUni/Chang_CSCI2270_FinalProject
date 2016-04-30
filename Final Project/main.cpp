@@ -31,7 +31,7 @@ int main(int argc,char *argv[])
        mt.addMovieNode(rating,title,year,quantity);
        ss.clear();
    }
-   while(command != "6")
+   while(command != "7")
    {
        displayMenu();
        getline(cin,command);
@@ -64,6 +64,13 @@ int main(int argc,char *argv[])
         {
             cout<<"Tree contains: "<<mt.countMovieNodes()<<" movies."<<endl;
         }
+        else if (command == "6")
+        {
+            cout<< "Enter title:"<<endl;
+            string input;
+            getline(cin, input);
+            mt.returnMovie(input);
+        }
     }
     cout<<"Goodbye!"<<endl;
     return 0;
@@ -77,5 +84,6 @@ void displayMenu()
     cout << "3. Print the inventory" << endl;
     cout << "4. Delete a movie" << endl;
     cout << "5. Count the movies" <<endl;
-    cout << "6. Quit" << endl;
+    cout << "6. Return movie" << endl;
+    cout << "7. Quit" << endl;
 }
