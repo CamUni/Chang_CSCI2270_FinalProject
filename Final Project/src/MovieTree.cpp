@@ -73,13 +73,42 @@ void MovieTree::rentMovie(string title)
 
 }
 
+void MovieTree::returnMovie(string title)
+{
+    MovieNode *foundMovie=root;
+    int flag=0;
+    while (foundMovie!=NULL)
+    {
+        if (foundMovie->title>title)
+            foundMovie=foundMovie->leftChild;
+        else if (foundMovie->title<title)
+            foundMovie=foundMovie->rightChild;
+        else
+        {
+                cout<<"Movie has been returned."<<endl;
+                cout << "Movie Info:" << endl;
+                cout << "===========" << endl;
+                cout << "Ranking:" << foundMovie->ranking << endl;
+                cout << "Title:" << foundMovie->title << endl;
+                cout << "Year:" << foundMovie->year << endl;
+                foundMovie->quantity=foundMovie->quantity+1;
+                cout << "Quantity:" << foundMovie->quantity << endl;
+            flag=1;
+            break;
+        }
+    }
+    if (flag==0)
+        cout<<"Movie not found."<<endl;
+
+}
+
 void MovieTree::printMovieInventory(MovieNode* node)
 {
     if (node->leftChild != NULL)
     {
         printMovieInventory(node->leftChild);
     }
-    cout<<"Movie: "<<node->title<<" "<<node->quantity<<endl;
+    cout<<"Movie: "<<node->title<<" - "<<node->quantity<< " left in stock" <<endl;
 
     if (node->rightChild != NULL)
     {
