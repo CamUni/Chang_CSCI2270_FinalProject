@@ -36,6 +36,7 @@ class MovieTree
         void addMovieNode(int ranking, std::string title, int releaseYear, int quantity);
         void findMovie(std::string title);
         void rentMovie(std::string title);
+        void returnMovie(std::string title);
 
     protected:
 
